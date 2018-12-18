@@ -111,7 +111,7 @@ echo -e "$phpversion" >> $phplocation/php.ini
 echo -e "zend_loader.enable=1" >> $phplocation/php.ini
 echo -e "zend_loader.disable_licensing=0" >> $phplocation/php.ini
 echo -e "zend_loader.obfuscation_level_support=3" >> $phplocation/php.ini
-echo -e "zend_loader.license_path=/usr/local/licenses/*.zl" >> $phplocation/php.ini
+echo -e "zend_loader.license_path=/usr/local/licenses/pbxmon.zl" >> $phplocation/php.ini
 
 echo ""
 echo -e $RED"ZendGuard Loader installed successfully :)"$RESET
