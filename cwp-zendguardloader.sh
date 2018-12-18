@@ -97,12 +97,19 @@ echo ""
 echo -e $RED"Setup Complete [/usr/local/zendguardloader]"$RESET
 sleep 3
 
+mkdir /usr/local/licenses/
+
 echo ""
 echo -e $RED"Adding line $phpversion to file $phplocation/php.ini"$RESET
 echo ""
 
 sed -i '/ZendGuardLoader.*so/d' $phplocation/php.ini
 sed -i '/zend_loader.enable=1/d' $phplocation/php.ini
+sed -i '/[Zend.loader]/d' $phplocation/php.ini
+sed -i '/zend_loader.disable_licensing=0/d' $phplocation/php.ini
+sed -i '/zend_loader.obfuscation_level_support=3/d' $phplocation/php.ini
+sed -i '/zend_loader.license_path=/usr/local/licenses/*.zl/d' $phplocation/php.ini
+
 echo "" >> $phplocation/php.ini
 echo "[Zend.loader]" >> $phplocation/php.ini
 echo -e "$phpversion" >> $phplocation/php.ini
