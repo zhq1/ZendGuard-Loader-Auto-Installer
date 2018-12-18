@@ -100,10 +100,17 @@ sleep 3
 echo ""
 echo -e $RED"Adding line $phpversion to file $phplocation/php.ini"$RESET
 echo ""
+
 sed -i '/ZendGuardLoader.*so/d' $phplocation/php.ini
 sed -i '/zend_loader.enable=1/d' $phplocation/php.ini
+echo "" >> $phplocation/php.ini
+echo "[Zend.loader]" >> $phplocation/php.ini
 echo -e "$phpversion" >> $phplocation/php.ini
 echo -e "zend_loader.enable=1" >> $phplocation/php.ini
+echo -e "zend_loader.disable_licensing=0" >> $phplocation/php.ini
+echo -e "zend_loader.obfuscation_level_support=3" >> $phplocation/php.ini
+echo -e "zend_loader.license_path=/usr/local/licenses/*.zl" >> $phplocation/php.ini
+
 echo ""
 echo -e $RED"ZendGuard Loader installed successfully :)"$RESET
 echo ""
@@ -118,9 +125,12 @@ exit
 fi
 
 echo ""
-echo -e $RED"Restarting Apache"$RED
+echo -e $RED"Restarting nginx"$RED
 echo ""
-service httpd restart
+rm -rf /usr/local/zendguardloader/*php*
+rm -rf /usr/local/zendguardloader/*PHP*
+systemctl restart php-fpm.service
+systemctl restart nginx.service
 
 echo ""
 php -v
