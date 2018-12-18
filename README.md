@@ -1,11 +1,7 @@
 # ZendGuard-Loader-Auto-Installer
 ZendGuard Loader Auto Installer for CentOS Web Panel
 
-cd /usr/local/src
-
-rm -rf cwp-zendguardloader.sh
-
-wget -c http://dl-package.bullten.in/cwp/cwp-zendguardloader.sh
+git clone https://github.com/zhq1/ZendGuard-Loader-Auto-Installer.git
 
 chmod +x cwp-zendguardloader.sh
 
